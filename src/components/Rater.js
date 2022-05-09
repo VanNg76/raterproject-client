@@ -7,17 +7,18 @@ import { Register } from "./auth/Register"
 
 export const Rater = () => (
     <>
-        <Route render={() => {
-            if (localStorage.getItem("rater")) {
-                return <>
-                    <Route>
-                        <NavBar />
-                        <ApplicationViews />
-                    </Route>
-                </>
-            } else {
-                return <Redirect to="/login" />
-            }
+        <Route
+            render={() => {
+                if (localStorage.getItem("rater")) {
+                    return <>
+                        <Route>
+                            <NavBar />
+                            <ApplicationViews />
+                        </Route>
+                    </>
+                } else {
+                    return <Redirect to="/login" />
+                }
         }} />
 
         <Route path="/login">
