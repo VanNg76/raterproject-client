@@ -65,3 +65,32 @@ export const getCategoryGamesByGameId = (gameId) => {
     })
         .then(res => res.json())
 }
+
+export const saveGameImage = (image) => {
+    return fetch(`http://localhost:8000/gamepictures`, {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("rater")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(image)
+    })
+}
+
+export const getGamesBySearchTerm = (searchTerm) => {
+    return fetch(`http://localhost:8000/games?q=${searchTerm}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("rater")}`
+        }
+    })
+        .then(res => res.json())
+}
+
+export const getGamesOrderBy = (field) => {
+    return fetch(`http://localhost:8000/games?orderby=${field}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("rater")}`
+        }
+    })
+        .then(res => res.json())
+}

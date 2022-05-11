@@ -38,6 +38,10 @@ export const GameDetail = () => {
             </div>
 
             <button onClick={() => {
+                history.push(`/games/${gameId}/upload`)
+            }}>Upload Action Picture</button>
+
+            <button onClick={() => {
                 history.push(`/games/${gameId}/review`)
             }}>Review Game</button>
 
@@ -54,14 +58,19 @@ export const GameDetail = () => {
 
             }
 
-            <button className="btn delete-game" onClick={(evt) => 
-                {
-                    evt.preventDefault()
-                    deleteGame(game.id)
-                        .then(() => {
-                            history.push("/games")
-                        })
-                }}>Delete</button>
+            {
+                game.is_creator ?
+                    <button className="btn delete-game" onClick={(evt) => 
+                    {
+                        evt.preventDefault()
+                        deleteGame(game.id)
+                            .then(() => {
+                                history.push("/games")
+                            })
+                    }}>Delete</button>
+                : null
+
+            }
         </>
     )
 }
